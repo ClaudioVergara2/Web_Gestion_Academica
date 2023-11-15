@@ -28,7 +28,7 @@ namespace WebApiNotas.Controllers
             return View();
         }
 
-        public IActionResult TipoAsignatura()
+        public IActionResult IngresoAsignatura()
         {
             return View();
         }

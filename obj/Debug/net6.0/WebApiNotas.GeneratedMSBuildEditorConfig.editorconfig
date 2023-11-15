@@ -24,6 +24,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/User/source/repos/WebApiNotas/Views/Home/IngresoAsignatura.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmdyZXNvQXNpZ25hdHVyYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/User/source/repos/WebApiNotas/Views/Home/IngresoCurso.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmdyZXNvQ3Vyc28uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -34,10 +38,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/User/source/repos/WebApiNotas/Views/Home/Semestre.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZW1lc3RyZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/User/source/repos/WebApiNotas/Views/Home/TipoAsignatura.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUaXBvQXNpZ25hdHVyYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/User/source/repos/WebApiNotas/Views/Shared/Error.cshtml]
