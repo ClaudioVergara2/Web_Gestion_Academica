@@ -28,12 +28,17 @@ namespace WebApiNotas.Controllers
             return View();
         }
 
-        public IActionResult IngresoAsignatura()
+        public IActionResult TipoAsignatura()
         {
             return View();
         }
 
         public IActionResult IngresoCurso()
+        {
+            return View();
+        }
+
+        public IActionResult Menu()
         {
             return View();
         }
