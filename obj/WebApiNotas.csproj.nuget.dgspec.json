@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\source\\repos\\WebApiNotas\\WebApiNotas.csproj": {}
+    "C:\\Users\\User\\source\\repos\\Web_Gestion_Academica\\WebApiNotas.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\source\\repos\\WebApiNotas\\WebApiNotas.csproj": {
+    "C:\\Users\\User\\source\\repos\\Web_Gestion_Academica\\WebApiNotas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\source\\repos\\WebApiNotas\\WebApiNotas.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\Web_Gestion_Academica\\WebApiNotas.csproj",
         "projectName": "WebApiNotas",
-        "projectPath": "C:\\Users\\User\\source\\repos\\WebApiNotas\\WebApiNotas.csproj",
+        "projectPath": "C:\\Users\\User\\source\\repos\\Web_Gestion_Academica\\WebApiNotas.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\source\\repos\\WebApiNotas\\obj\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\Web_Gestion_Academica\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

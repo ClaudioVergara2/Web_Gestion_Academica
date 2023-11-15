@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3tttlP0qxde5ZBOBnB+8pBAYMVHmdAmXUdj+9y4pn3QobEZTQgu9ofXJq7zPfFBfkmUylsRAp7RkDmRoJrZjPw==",
+  "dgSpecHash": "DL8YouARxo4Pseym6jQCo4h4YXNAaYSd6La2kiB6CTplVj11LjLLivYSw4Rb0iQ5cxs/4G2lXQNjAl0/nfLpzw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\User\\source\\repos\\WebApiNotas\\WebApiNotas.csproj",
+  "projectFilePath": "C:\\Users\\User\\source\\repos\\Web_Gestion_Academica\\WebApiNotas.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
