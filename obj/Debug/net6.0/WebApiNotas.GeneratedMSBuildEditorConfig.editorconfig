@@ -20,12 +20,12 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBc2lnbmF0dXJhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/source/repos/WebApiNotas/Views/Home/Curso.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDdXJzby5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/User/source/repos/WebApiNotas/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/User/source/repos/WebApiNotas/Views/Home/IngresoCurso.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmdyZXNvQ3Vyc28uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/User/source/repos/WebApiNotas/Views/Home/Menu.cshtml]
