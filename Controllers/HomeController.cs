@@ -38,8 +38,28 @@ namespace WebApiNotas.Controllers
             return View();
         }
 
+        public IActionResult IniciarSesion(string username, string password)
+        {
+            // Tu lógica de inicio de sesión aquí
+
+            // Ejemplo de validación básica (deberías usar autenticación real):
+            if (username == "usuario" && password == "contraseña")
+            {
+                // Usuario y contraseña válidos, redirigir a la vista "Index" del controlador "Home"
+                return RedirectToAction("Menu", "Home");
+            }
+            else
+            {
+                // Usuario o contraseña incorrectos, mostrar mensaje de error
+                TempData["Error"] = "Usuario o contraseña incorrectos";
+                return RedirectToAction("Index"); // Redirigir a la página de inicio de sesión
+            }
+        }
+
         public IActionResult Menu()
         {
+
+            // Resto del código...
             return View();
         }
 
