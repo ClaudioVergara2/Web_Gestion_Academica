@@ -43,6 +43,31 @@ namespace WebApiNotas.Controllers
             return View();
         }
 
+        public IActionResult Alumnos()
+        {
+            return View();
+        }
+
+        public IActionResult Notas()
+        {
+            return View();
+        }
+
+        public IActionResult Perfil()
+        {
+            return View();
+        }
+
+        public IActionResult Personas()
+        {
+            return View();
+        }
+
+        public IActionResult Usuarios()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
