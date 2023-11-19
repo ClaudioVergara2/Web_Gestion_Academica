@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = null; // Deshabilita el uso del layout compartido
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -67,11 +67,11 @@
             <h4 class="text-center">Iniciar Sesión</h4>
             <div class="mb-3 mt-5">
                 <label for="username" class="form-label">Nombre de Usuario</label>
-                <input type="text" class="form-control" id="username" name="username" required>
+                <input type="text" class="form-control" id="username" name="username">
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" id="password" name="password" required>
+                <input type="password" class="form-control" id="password" name="password">
             </div>
             <div id="errorContainer" class="text-danger"></div>
             <button type="submit" class="btn btn-primary mt-5">Ingresar</button>
@@ -84,12 +84,16 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            // Configuración de la validación del formulario
             $("#loginForm").submit(function (event) {
-                event.preventDefault(); // Evitar la recarga de la página
+                event.preventDefault();
 
                 var nombreUsuario = $("#username").val();
                 var contraseña = $("#password").val();
+
+                if (!nombreUsuario || !contraseña) {
+                    $("#errorContainer").text("Los campos no pueden estar vacíos.");
+                    return;
+                }
 
                 var credenciales = {
                     NombreUsuario: nombreUsuario,
@@ -109,20 +113,21 @@
                             var urlDestino = "/Home/Menu?nombreUsuario=" + encodeURIComponent(nombreUsuario) + "&contrasena=" + encodeURIComponent(contraseña);
                             window.location.href = urlDestino;
                         } else {
-                            // Mostrar mensaje de error directamente en la página
                             $("#errorContainer").text("Usuario o contraseña incorrectos");
                         }
                     },
                     error: function (xhr, status, error) {
                         console.error("Error en la solicitud AJAX:", xhr);
-                        alert("Usuario o Contraseña Incorrecta " + error);
-
-                        // También puedes mostrar un mensaje de error más detallado directamente en la página
-                        $("#errorContainer").text("Usuario o contraseña incorrectos. Consulta la consola para más detalles.");
+                        if (xhr.status === 404) {
+                            $("#errorContainer").text("Usuario no se encuentra en el sistema.");
+                        } else {
+                            $("#errorContainer").text("Usuario o contraseña incorrectos. Consulta la consola para más detalles.");
+                        }
                     }
                 });
             });
         });
     </script>
+
 </body>
 </html>

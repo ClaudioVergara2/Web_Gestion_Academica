@@ -9,73 +9,73 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WebApiNotas
 build_property.RootNamespace = WebApiNotas
-build_property.ProjectDir = C:\Users\jmuno\OneDrive\Escritorio\pruebas\Web_Gestion_Academica\
+build_property.ProjectDir = C:\Users\User\source\repos\Web_Gestion_Academica\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\jmuno\OneDrive\Escritorio\pruebas\Web_Gestion_Academica
+build_property.MSBuildProjectDirectory = C:\Users\User\source\repos\Web_Gestion_Academica
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/jmuno/OneDrive/Escritorio/pruebas/Web_Gestion_Academica/Views/Home/Alumnos.cshtml]
+[C:/Users/User/source/repos/Web_Gestion_Academica/Views/Home/Alumnos.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBbHVtbm9zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jmuno/OneDrive/Escritorio/pruebas/Web_Gestion_Academica/Views/Home/Asignatura.cshtml]
+[C:/Users/User/source/repos/Web_Gestion_Academica/Views/Home/Asignatura.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBc2lnbmF0dXJhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jmuno/OneDrive/Escritorio/pruebas/Web_Gestion_Academica/Views/Home/Index.cshtml]
+[C:/Users/User/source/repos/Web_Gestion_Academica/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jmuno/OneDrive/Escritorio/pruebas/Web_Gestion_Academica/Views/Home/IngresoAsignatura.cshtml]
+[C:/Users/User/source/repos/Web_Gestion_Academica/Views/Home/IngresoAsignatura.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmdyZXNvQXNpZ25hdHVyYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jmuno/OneDrive/Escritorio/pruebas/Web_Gestion_Academica/Views/Home/IngresoCurso.cshtml]
+[C:/Users/User/source/repos/Web_Gestion_Academica/Views/Home/IngresoCurso.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmdyZXNvQ3Vyc28uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jmuno/OneDrive/Escritorio/pruebas/Web_Gestion_Academica/Views/Home/Menu.cshtml]
+[C:/Users/User/source/repos/Web_Gestion_Academica/Views/Home/Menu.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNZW51LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jmuno/OneDrive/Escritorio/pruebas/Web_Gestion_Academica/Views/Home/Notas.cshtml]
+[C:/Users/User/source/repos/Web_Gestion_Academica/Views/Home/Notas.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxOb3Rhcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jmuno/OneDrive/Escritorio/pruebas/Web_Gestion_Academica/Views/Home/Perfil.cshtml]
+[C:/Users/User/source/repos/Web_Gestion_Academica/Views/Home/Perfil.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQZXJmaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jmuno/OneDrive/Escritorio/pruebas/Web_Gestion_Academica/Views/Home/Personas.cshtml]
+[C:/Users/User/source/repos/Web_Gestion_Academica/Views/Home/Personas.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQZXJzb25hcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jmuno/OneDrive/Escritorio/pruebas/Web_Gestion_Academica/Views/Home/Semestre.cshtml]
+[C:/Users/User/source/repos/Web_Gestion_Academica/Views/Home/Semestre.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZW1lc3RyZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jmuno/OneDrive/Escritorio/pruebas/Web_Gestion_Academica/Views/Home/Usuarios.cshtml]
+[C:/Users/User/source/repos/Web_Gestion_Academica/Views/Home/Usuarios.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVc3Vhcmlvcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jmuno/OneDrive/Escritorio/pruebas/Web_Gestion_Academica/Views/Shared/Error.cshtml]
+[C:/Users/User/source/repos/Web_Gestion_Academica/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jmuno/OneDrive/Escritorio/pruebas/Web_Gestion_Academica/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/User/source/repos/Web_Gestion_Academica/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jmuno/OneDrive/Escritorio/pruebas/Web_Gestion_Academica/Views/_ViewImports.cshtml]
+[C:/Users/User/source/repos/Web_Gestion_Academica/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jmuno/OneDrive/Escritorio/pruebas/Web_Gestion_Academica/Views/_ViewStart.cshtml]
+[C:/Users/User/source/repos/Web_Gestion_Academica/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jmuno/OneDrive/Escritorio/pruebas/Web_Gestion_Academica/Views/Shared/_Layout.cshtml]
+[C:/Users/User/source/repos/Web_Gestion_Academica/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-d7brbjxz8c
