@@ -11,9 +11,18 @@
             transition: background-color 0.3s;
         }
 
-            .nav-link:hover {
-                background-color: #495057;
-            }
+        .nav-link:hover {
+            background-color: #495057;
+         }
+
+        .btn-agregar {
+            margin-left: auto;
+        }
+
+        .btn-editar {
+            background-color: #28a745;
+            color: white;
+        }
     </style>
     <title>Personas</title>
 </head>
@@ -67,8 +76,69 @@
                     </ul>
                 </div>
             </div>
+            <div class="col-md-8">
+                <br />
+                <div class="card p-4">
+                    <h2 class="text-center mb-4">Ingresar Personas</h2>
+                    <form>
+                        <div class="mb-3">
+                            <label for="nombrePersona" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombrePersona" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="apellidoPersona" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" id="apellidoPersona" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="rut" class="form-label">Rut</label>
+                            <input type="number" class="form-control" id="rut" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fechaNacimientoPersona" class="form-label">Fecha de Nacimiento</label>
+                            <input type="date" class="form-control" id="fechaNacimientoPersona" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="perfilPersona" class="form-label">Perfil</label>
+                            <select class="form-select" id="perfilPersona" required>
+                            <!--<option>Operador</option>
+                                <option>Profesor</option>
+                                <option>Estudiante</option>-->
+                            </select>
+                        </div>
+                        <div class="mb-3 d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary">Agregar</button>
+                        </div>
+                    </form>
+                    <hr>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Fecha de Nacimiento</th>
+                                <th>Perfil</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <button class="btn btn-editar">Editar</button>
+                                    <button class="btn btn-danger">Eliminar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-        </di
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
