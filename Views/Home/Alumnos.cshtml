@@ -11,9 +11,14 @@
             transition: background-color 0.3s;
         }
 
-            .nav-link:hover {
-                background-color: #495057;
-            }
+        .nav-link:hover {
+            background-color: #495057;
+        }
+
+        .btn-editar {
+            background-color: #28a745;
+            color: white;
+        }
     </style>
     <title>Alumnos</title>
 </head>
@@ -65,6 +70,49 @@
                         </li>
                         <hr />
                     </ul>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <br />
+                <div class="card p-4">
+                    <h2 class="text-center mb-4">Ingreso de Alumnos</h2>
+                    <form>
+                        <div class="mb-3">
+                            <label for="nombreAlumno" class="form-label">Nombres</label>
+                            <input type="text" class="form-control" id="nombreAlumno" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="apellidoAlumno" class="form-label">Apellidos</label>
+                            <input type="text" class="form-control" id="apellidoAlumno" required>
+                        </div>
+                        <div class="mb-3 d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary">Agregar</button>
+                        </div>
+                    </form>
+                    <hr>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Nombres</th>
+                                <th>Apellidos</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <button class="btn btn-editar">Editar</button>
+                                    <button class="btn btn-danger">Deshabilitar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
