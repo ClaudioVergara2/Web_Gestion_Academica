@@ -11,9 +11,9 @@
             transition: background-color 0.3s;
         }
 
-        .nav-link:hover {
-            background-color: #495057;
-        }
+            .nav-link:hover {
+                background-color: #495057;
+            }
 
         .btn-editar {
             background-color: #28a745;
@@ -82,17 +82,12 @@
                     <h2 class="text-center mb-4">Ingreso de Alumnos</h2>
                     <form>
                         <div class="mb-3">
-                            <label for="perfilEstudiante" class="form-label">Perfil</label>
-                            <select class="form-select" id="perfilEstudiante" required>
-                                <option></option>
-                            </select>
+                            <label for="nombreAlumno" class="form-label">Nombres</label>
+                            <input type="text" class="form-control" id="nombreAlumno" required>
                         </div>
                         <div class="mb-3">
-                            <label for="cursoEstudiante" class="form-label">Curso</label>
-                            <select class="form-select" id="cursoEstudiante" required>
-                                <option></option>
-                                <option></option>
-                            </select>
+                            <label for="apellidoAlumno" class="form-label">Apellidos</label>
+                            <input type="text" class="form-control" id="apellidoAlumno" required>
                         </div>
                         <div class="mb-3 d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary">Agregar</button>
@@ -102,8 +97,10 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Perfil</th>
-                                <th>Curso</th>
+                                <th>Código</th>
+                                <th>Nombres</th>
+                                <th>Apellidos</th>
+                                <th>Estado</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -111,9 +108,11 @@
                             <tr>
                                 <td></td>
                                 <td></td>
+                                <td></td>
+                                <td></td>
                                 <td>
                                     <button class="btn btn-editar">Editar</button>
-                                    <button class="btn btn-danger">Eliminar</button>
+                                    <button class="btn btn-danger">Deshabilitar</button>
                                 </td>
                             </tr>
                         </tbody>
