@@ -75,7 +75,7 @@
                 <br />
                 <div class="card p-4">
                     <h2 class="text-center mb-4">Crear Usuarios</h2>
-                    <form>
+                    <form id="formUsuario">
                         <div class="mb-3">
                             <label for="nombreUsuario" class="form-label">Nombre de Usuario</label>
                             <input type="text" class="form-control" id="nombreUsuario" required>
@@ -89,7 +89,7 @@
                         </div>
                     </form>
                     <hr>
-                    <table class="table">
+                    <table class="table" id="tablaUsuarios">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -110,5 +110,54 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            function cargarUsuarios() {
+                fetch('https://localhost:44343/usuarios/ListadoUsuario')
+                    .then(response => response.json())
+                    .then(usuarios => {
+                        var tablaUsuarios = document.getElementById('tablaUsuarios');
+                        var tbody = tablaUsuarios.querySelector('tbody');
+                        tbody.innerHTML = '';
+
+                        usuarios.forEach(usuario => {
+                            var fila = tbody.insertRow();
+                            var celdaNombreUsuario = fila.insertCell(0);
+                            var celdaRutPersona = fila.insertCell(1);
+                            var celdaContraseña = fila.insertCell(2);
+
+                            celdaNombreUsuario.innerHTML = usuario.NomUsuario;
+                            celdaRutPersona.innerHTML = usuario.RutPersona;
+                            celdaContraseña.innerHTML = usuario.Contraseña;
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error al obtener la lista de usuarios:', error);
+                    });
+            }
+
+            document.getElementById('formUsuario').addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                var nombreUsuario = document.getElementById('nombreUsuario').value;
+                var contrasena = document.getElementById('contrasena').value;
+                var rut = document.getElementById('rut').value;
+
+                fetch(`https://localhost:44343/usuarios/InsertarUsuario?nom=${nombreUsuario}&psw=${contrasena}&rut=${rut}`, {
+                    method: 'POST'
+                })
+                    .then(response => response.json())
+                    .then(response => {
+                        console.log(response);
+                        cargarUsuarios();
+                    })
+                    .catch(error => {
+                        console.error('Error al insertar un nuevo usuario:', error);
+                    });
+            });
+
+            cargarUsuarios();
+        });
+    </script>
 </body>
 </html>

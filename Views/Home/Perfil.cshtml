@@ -75,7 +75,7 @@
                 <br />
                 <div class="card p-4">
                     <h2 class="text-center mb-4">Ingresar Perfiles</h2>
-                    <form>
+                    <form id="formIngresarPerfil">
                         <div class="mb-3">
                             <label for="nombrePerfil" class="form-label">Nombre del Perfil</label>
                             <input type="text" class="form-control" id="nombrePerfil" required>
@@ -92,11 +92,8 @@
                                 <th>Nombre del Perfil</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                        <tbody id="tablaPerfilesBody">
+                            <!-- Datos de perfiles se mostrarán aquí -->
                         </tbody>
                     </table>
                 </div>
@@ -104,5 +101,67 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('formIngresarPerfil').addEventListener('submit', function (event) {
+            event.preventDefault();
+            agregarPerfil();
+        });
+
+        function agregarPerfil() {
+            var nombrePerfil = document.getElementById('nombrePerfil').value;
+
+            fetch('https://localhost:44343/Perfils/InsertarPerfil', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    NomPerfil: nombrePerfil
+                }),
+            })
+                .then(response => {
+                    console.log('Response status:', response.status);
+                    if (!response.ok) {
+                        return response.json().then(error => {
+                            console.error('Error:', error);
+
+                            // Actualiza el contenido del contenedor para mostrar el mensaje de error
+                            alert('Error al agregar perfil: ' + error.mensaje);
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Data:', data);
+                    document.getElementById('nombrePerfil').value = '';
+                    cargarListadoPerfiles();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function cargarListadoPerfiles() {
+            fetch('https://localhost:44343/Perfils/ListadoPerfiles')
+                .then(response => response.json())
+                .then(data => {
+                    var tablaPerfilesBody = document.getElementById('tablaPerfilesBody');
+                    tablaPerfilesBody.innerHTML = '';
+
+                    data.forEach(perfil => {
+                        var row = document.createElement('tr');
+                        row.innerHTML = `<td>${perfil.IdPerfil}</td><td>${perfil.NomPerfil}</td>`;
+                        tablaPerfilesBody.appendChild(row);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            cargarListadoPerfiles();
+        });
+    </script>
 </body>
 </html>

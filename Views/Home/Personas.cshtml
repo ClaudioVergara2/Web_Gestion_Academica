@@ -80,7 +80,7 @@
                 <br />
                 <div class="card p-4">
                     <h2 class="text-center mb-4">Ingresar Personas</h2>
-                    <form>
+                    <form id="formPersona">
                         <div class="mb-3">
                             <label for="nombrePersona" class="form-label">Nombre</label>
                             <input type="text" class="form-control" id="nombrePersona" required>
@@ -100,17 +100,17 @@
                         <div class="mb-3">
                             <label for="perfilPersona" class="form-label">Perfil</label>
                             <select class="form-select" id="perfilPersona" required>
-                            <!--<option>Operador</option>
-                                <option>Profesor</option>
-                                <option>Estudiante</option>-->
+                                <option value="1">Operador</option>
+                                <option value="2">Profesor</option>
+                                <option value="3">Estudiante</option>
                             </select>
                         </div>
                         <div class="mb-3 d-flex justify-content-end">
-                            <button type="submit" class="btn btn-primary">Agregar</button>
+                            <button type="button" class="btn btn-primary" onclick="agregarPersona()">Agregar</button>
                         </div>
                     </form>
                     <hr>
-                    <table class="table">
+                    <table class="table" id="tablaPersonas">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -122,23 +122,260 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <button class="btn btn-editar">Editar</button>
-                                    <button class="btn btn-danger">Eliminar</button>
-                                </td>
-                            </tr>
+                            <!-- Filas de personas se generarán aquí mediante JavaScript -->
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Modal de Edición -->
+    <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="modalEditarLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalEditarLabel">Editar Persona</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formEditarPersona">
+                        <div class="mb-3">
+                            <label for="nombreEditar" class="form-label">Nuevo Nombre</label>
+                            <input type="text" class="form-control" id="nombreEditar" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="apellidoEditar" class="form-label">Nuevo Apellido</label>
+                            <input type="text" class="form-control" id="apellidoEditar" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fechaNacimientoEditar" class="form-label">Nueva Fecha de Nacimiento</label>
+                            <input type="date" class="form-control" id="fechaNacimientoEditar" required>
+                        </div>
+                        <div class="mb-3 d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary" onclick="guardarEdicionPersona()">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        var rutPersona;
+
+        // Función para agregar una persona
+        function agregarPersona() {
+            // Obtener datos del formulario
+            rutPersona = document.getElementById("rut").value; // Asignar valor a rutPersona
+            var nom = document.getElementById("nombrePersona").value;
+            var ape = document.getElementById("apellidoPersona").value;
+            var fechaNacimiento = document.getElementById("fechaNacimientoPersona").value;
+            var perfil = document.getElementById("perfilPersona").value;
+
+            // Validar campos
+            if (rutPersona === '' || nom === '' || ape === '' || fechaNacimiento === '' || perfil === '0') {
+                alert('Todos los campos son obligatorios.');
+                return;
+            }
+
+            // Enviar datos a la API
+            fetch('https://localhost:44343/Personas/InsertarPersona', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    Rut: rutPersona,
+                    Nom: nom,
+                    Ape: ape,
+                    IdPerfil: parseInt(perfil),
+                    FechaNacimiento: fechaNacimiento
+                }),
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Recargar la tabla después de agregar una persona
+                    cargarTablaPersonas();
+
+                    // Limpiar el formulario
+                    document.getElementById("nombrePersona").value = '';
+                    document.getElementById("apellidoPersona").value = '';
+                    document.getElementById("rut").value = '';
+                    document.getElementById("fechaNacimientoPersona").value = '';
+                    document.getElementById("perfilPersona").value = '0';
+                })
+                .catch((error) => {
+                    console.error('Error en la solicitud:', error);
+                });
+        }
+
+        // Función para cargar la tabla de personas
+        function cargarTablaPersonas() {
+            // Obtener datos de la API
+            fetch('https://localhost:44343/Personas/ListadoPersona')
+                .then(response => response.json())
+                .then(data => {
+                    // Limpiar la tabla
+                    var tbody = document.getElementById("tablaPersonas").getElementsByTagName('tbody')[0];
+                    tbody.innerHTML = '';
+
+                    // Llenar la tabla con los datos recibidos
+                    data.forEach(persona => {
+                        var row = document.createElement('tr');
+                        row.innerHTML = `<td>${persona.RutPersona}</td>
+                              <td>${persona.NomPersona}</td>
+                              <td>${persona.ApePersona}</td>
+                              <td>${persona.FechaNacimiento}</td>
+                              <td>${persona.NomPerfil}</td>
+                              <td>
+                                <button class="btn btn-editar" onclick="editarPersona('${persona.RutPersona}')">Editar</button>
+                                <button class="btn btn-danger" onclick="eliminarPersona('${persona.RutPersona}')">Eliminar</button>
+                              </td>`;
+                        tbody.appendChild(row);
+                    });
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function editarPersona(rut) {
+            rutPersona = rut;
+            // Obtener datos de la persona para prellenar el formulario de edición
+            obtenerPersonaPorRut(rutPersona)
+                .then(persona => {
+                    // Llenar el formulario con los datos actuales
+                    document.getElementById("nombreEditar").value = persona.NomPersona;
+                    document.getElementById("apellidoEditar").value = persona.ApePersona;
+                    document.getElementById("fechaNacimientoEditar").value = persona.FechaNacimiento;
+
+                    // Establecer el atributo de datos "rut" en el elemento
+                    document.getElementById("nombreEditar").dataset.rut = persona.RutPersona;
+
+                    // Mostrar el modal de edición
+                    var modalEditar = new bootstrap.Modal(document.getElementById('modalEditar'));
+                    modalEditar.show();
+                });
+        }
+
+        function guardarEdicionPersona() {
+            // Obtener datos del formulario de edición
+            var nuevoNombre = document.getElementById("nombreEditar").value;
+            var nuevoApellido = document.getElementById("apellidoEditar").value;
+            var nuevaFechaNacimiento = document.getElementById("fechaNacimientoEditar").value;
+
+            // Validar campos
+            if (nuevoNombre === '' || nuevoApellido === '' || nuevaFechaNacimiento === '') {
+                alert('Todos los campos son obligatorios.');
+                return;
+            }
+
+            // Realizar la llamada a la API para editar la persona
+            editarPersonaEnAPI(nuevoNombre, nuevoApellido, nuevaFechaNacimiento);
+
+            // Cerrar el modal después de guardar la edición
+            var modalEditar = new bootstrap.Modal(document.getElementById('modalEditar'));
+            modalEditar.hide();
+        }
+
+        function editarPersonaEnAPI(nuevoNombre, nuevoApellido, nuevaFechaNacimiento) {
+            // Obtener el rut de la persona que se está editando
+            var nuevoNombre = document.getElementById("nombreEditar").value;
+            var nuevoApellido = document.getElementById("apellidoEditar").value;
+            var nuevaFechaNacimiento = new Date(document.getElementById("fechaNacimientoEditar").value).toISOString();
+
+            // Formatear la nueva fecha en el formato esperado por el servidor (por ejemplo, "YYYY-MM-DD")
+            var nuevaFechaFormateada = new Date(nuevaFechaNacimiento).toISOString().split('T')[0];
+
+            // Construir el objeto con los datos actualizados
+            var datosActualizados = {
+                Rut: rutPersona,
+                Nom: nuevoNombre,
+                Ape: nuevoApellido,
+                FechaNacimiento: nuevaFechaFormateada
+            };
+
+            // Realizar la solicitud PUT al servidor
+            fetch(`https://localhost:44343/Personas/EditarPersona`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(datosActualizados),
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Lógica adicional después de editar la persona, si es necesario
+                    console.log('Persona editada con éxito:', data);
+                    // Recargar la tabla después de editar una persona
+                    cargarTablaPersonas();
+                })
+                .catch((error) => {
+                    console.error('Error en la solicitud:', error);
+                    console.error('Error detallado:', error.message);
+                });
+        }
+
+        function obtenerRutPersonaActual() {
+            // Aquí debes implementar la lógica para obtener el rut de la persona actualmente en edición
+            // Puede ser recuperado de algún elemento en tu interfaz de usuario o de la información almacenada en tu aplicación
+            // Por ejemplo, si al hacer clic en "Editar" guardas el rut en un atributo de datos (data-rut), puedes recuperarlo así:
+            var rut = document.getElementById("nombreEditar").dataset.rut;
+            return rut;
+        }
+
+
+        function obtenerPersonaPorRut(rutPersona) {
+            return fetch(`https://localhost:44343/Personas/ObtenerPersona?rut=${rutPersona}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .catch(error => {
+                    console.error('Error en la solicitud:', error);
+                });
+        }
+
+        function eliminarPersona(rut) {
+            // Lógica para eliminar persona
+            // Puedes utilizar la función fetch para enviar una solicitud DELETE al servidor
+            // Aquí debes implementar la lógica para eliminar la persona con el rut especificado
+            // Después de eliminar la persona, recarga la tabla llamando a cargarTablaPersonas()
+            // Por ejemplo:
+            fetch(`https://localhost:44343/Personas/EliminarPersona?rut=${rut}`, {
+                method: 'DELETE',
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Lógica después de la eliminación
+                    console.log('Persona eliminada con éxito:', data);
+                    // Recargar la tabla después de eliminar una persona
+                    cargarTablaPersonas();
+                })
+                .catch((error) => {
+                    console.error('Error en la solicitud de eliminación:', error);
+                    console.error('Error detallado:', error.message);
+                });
+        }
+        // Llamar a la función para cargar la tabla al cargar la página
+        cargarTablaPersonas();
+    </script>
 </body>
 </html>

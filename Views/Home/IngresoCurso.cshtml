@@ -75,15 +75,17 @@
                 <br />
                 <div class="card p-4">
                     <h2 class="text-center mb-4">Ingreso de Curso</h2>
-                    <form>
+                    <form id="formIngresoCurso">
                         <div class="mb-3">
                             <label for="profesor" class="form-label">Profesor</label>
                             <select class="form-select" id="profesor" required>
+                                <!-- Opciones de profesores se llenarán dinámicamente -->
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="asignatura" class="form-label">Asignatura</label>
                             <select class="form-select" id="asignatura" required>
+                                <!-- Opciones de asignaturas se llenarán dinámicamente -->
                             </select>
                         </div>
                         <div class="mb-3">
@@ -95,6 +97,8 @@
                         </div>
                     </form>
                     <hr />
+                    <div class="error-message" id="mensajeError"></div>
+                    <hr />
                     <table class="table">
                         <thead>
                             <tr>
@@ -103,8 +107,8 @@
                                 <th>Sección</th>
                             </tr>
                         </thead>
-                        <tbody>
-
+                        <tbody id="tablaCursosBody">
+                            <!-- Datos de cursos se mostrarán aquí -->
                         </tbody>
                     </table>
                 </div>
@@ -112,5 +116,112 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('formIngresoCurso').addEventListener('submit', function (event) {
+            event.preventDefault();
+            agregarCurso();
+        });
+
+        function agregarCurso() {
+            var rutProfesor = document.getElementById('profesor').value;
+            var codAsignatura = document.getElementById('asignatura').value;
+            var seccion = document.getElementById('seccion').value;
+
+            fetch('https://localhost:44343/Cursos/InsertarCursos', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    RutPersona: rutProfesor,
+                    CodAsignatura: codAsignatura,
+                    Seccion: parseInt(seccion),
+                }),
+            })
+                .then(response => {
+                    console.log('Response status:', response.status);
+                    if (!response.ok) {
+                        return response.json().then(error => {
+                            console.error('Error:', error);
+
+                            // Actualiza el contenido del contenedor para mostrar el mensaje de error
+                            document.getElementById('mensajeError').innerText = 'Error al agregar curso: ' + error.respuesta;
+                        });
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Data:', data);
+                    document.getElementById('seccion').value = '';
+                    cargarListadoCursos();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function cargarListadoCursos() {
+            fetch('https://localhost:44343/Cursos/ListadoCursos')
+                .then(response => response.json())
+                .then(data => {
+                    var tablaCursosBody = document.getElementById('tablaCursosBody');
+                    tablaCursosBody.innerHTML = '';
+
+                    data.forEach(curso => {
+                        var row = document.createElement('tr');
+                        row.innerHTML = `<td>${curso.RutPersona}</td><td>${curso.NomAsignatura}</td><td>${curso.Seccion}</td>`;
+                        tablaCursosBody.appendChild(row);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            cargarListadoProfesores();
+            cargarListadoAsignaturas();
+            cargarListadoCursos();
+        });
+
+        function cargarListadoProfesores() {
+            fetch('https://localhost:44343/Cursos/ListadoProfesores')
+                .then(response => response.json())
+                .then(data => {
+                    var profesorDropdown = document.getElementById('profesor');
+                    profesorDropdown.innerHTML = '';
+
+                    data.forEach(profesor => {
+                        var option = document.createElement('option');
+                        option.value = profesor;
+                        option.textContent = profesor;
+                        profesorDropdown.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function cargarListadoAsignaturas() {
+            fetch('https://localhost:44343/Cursos/ListadoAsignaturas')
+                .then(response => response.json())
+                .then(data => {
+                    var asignaturaDropdown = document.getElementById('asignatura');
+                    asignaturaDropdown.innerHTML = '';
+
+                    data.forEach(asignatura => {
+                        var option = document.createElement('option');
+                        option.value = asignatura.CodAsignatura;
+                        option.textContent = asignatura.NomAsignatura;
+                        asignaturaDropdown.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
 </body>
 </html>
